@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/chatsFragment">
+
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.polotechnologies.mydoctor.fragments.ChatsFragment"
+        android:label="Chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="com.polotechnologies.mydoctor.fragments.DoctorsFragment"
+        android:label="Doctors"
+        tools:layout="@layout/fragment_doctors" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.polotechnologies.mydoctor.fragments.NotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/appointmentsFragment"
+        android:name="com.polotechnologies.mydoctor.fragments.AppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_appointments" />
+</navigation>

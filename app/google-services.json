@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "130532313638",
+    "firebase_url": "https://mydoctor-c7be1.firebaseio.com",
+    "project_id": "mydoctor-c7be1",
+    "storage_bucket": "mydoctor-c7be1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130532313638:android:009e17ab5c283d1c",
+        "android_client_info": {
+          "package_name": "com.polotechnologies.mydoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130532313638-77l71nmunnnnq26i9v7170p425h9g0ha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polotechnologies.mydoctor",
+            "certificate_hash": "2eab6b733af4bcf6a2836ea25ac518cdcb8fa8db"
+          }
+        },
+        {
+          "client_id": "130532313638-mifa2t9pfp29ete0kqumveid9gqaklss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlHmgbNH6-RJJd2-rATYhyliyOS8owfag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130532313638-mifa2t9pfp29ete0kqumveid9gqaklss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

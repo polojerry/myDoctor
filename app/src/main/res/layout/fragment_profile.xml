@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ProfileFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Profile"
+                android:theme="@style/AppTheme.DarkActionBar"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:titleTextColor="@android:color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="224dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/polo_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_profile" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_picture"
+            app:srcCompat="@drawable/ic_account_circle_black" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_profile_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconDrawable="@drawable/ic_edit_black"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_display_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:hint="Name"
+                android:text="Jeremiah Polo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon_phone_number"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView"
+            app:srcCompat="@drawable/ic_local_phone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_mobile_number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconDrawable="@drawable/ic_edit_black"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_phone_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon_phone_number"
+            app:layout_constraintTop_toTopOf="@+id/icon_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_display_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact Number"
+                android:enabled="true"
+                android:text="254790689212" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon_designation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_phone_number"
+            app:srcCompat="@drawable/ic_work" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_designation"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconDrawable="@drawable/ic_edit_black"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_designation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon_designation"
+            app:layout_constraintTop_toTopOf="@+id/icon_designation">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_display_designation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:hint="Designation"
+                android:text="Doctor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon_speciality"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_designation"
+            app:srcCompat="@drawable/ic_local_pharmacy" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_speciality"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconDrawable="@drawable/ic_edit_black"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_speciality"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon_speciality"
+            app:layout_constraintTop_toTopOf="@+id/icon_speciality">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_display_speciality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Speciality"
+                android:enabled="true"
+                android:textColor="@android:color/black"
+                android:text="Dentist" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
