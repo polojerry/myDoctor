@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 28
@@ -50,6 +51,17 @@ dependencies {
 
     //material components
     implementation 'com.google.android.material:material:1.1.0-alpha09'
+
+    //firebase storage
+    implementation 'com.google.firebase:firebase-storage:18.1.1'
+
+    //picasso imageloader
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.google.firebase:firebase-database:18.0.1'
+
+    implementation 'com.firebaseui:firebase-ui-database:5.0.0'
+    implementation 'com.firebaseui:firebase-ui-storage:5.0.0'
 
 
 }

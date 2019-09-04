@@ -4,13 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.polotechnologies.mydoctor.HomeFragmentDirections;
 import com.polotechnologies.mydoctor.R;
 import com.polotechnologies.mydoctor.dataClass.DoctorCategories;
 
@@ -20,10 +22,12 @@ public class DoctorsCategoryRecyclerAdapter extends RecyclerView.Adapter<Doctors
 
     private Context mContext;
     private List<DoctorCategories> mDoctorCategories;
+    private Fragment mFragment;
 
-    public DoctorsCategoryRecyclerAdapter(Context context, List<DoctorCategories> doctorCategories) {
+    public DoctorsCategoryRecyclerAdapter(Context context, List<DoctorCategories> doctorCategories, Fragment fragment) {
         mContext = context;
         mDoctorCategories = doctorCategories;
+        mFragment = fragment;
     }
 
     @NonNull
@@ -40,8 +44,6 @@ public class DoctorsCategoryRecyclerAdapter extends RecyclerView.Adapter<Doctors
         holder.categoryImage.setImageDrawable(mContext.getDrawable(doctorCategories.getImageId()));
         holder.categoryName.setText(doctorCategories.getCategory());
         holder.position = position;
-
-
     }
 
     @Override
@@ -64,8 +66,18 @@ public class DoctorsCategoryRecyclerAdapter extends RecyclerView.Adapter<Doctors
                 @Override
                 public void onClick(View v) {
                     DoctorCategories clickedCategory = mDoctorCategories.get(position);
+                    String category = clickedCategory.getCategory();
 
-                    Toast.makeText(mContext, clickedCategory.getCategory(), Toast.LENGTH_SHORT).show();
+                    NavHostFragment fragment = (NavHostFragment)mFragment.getActivity()
+                            .getSupportFragmentManager()
+                            .findFragmentById(R.id.main_nav_host_fragment);
+
+                    HomeFragmentDirections.ActionHomeFragmentToDoctorsListFragment action =
+                            HomeFragmentDirections.actionHomeFragmentToDoctorsListFragment(category);
+
+                    fragment.getNavController().navigate(action);
+                    mFragment.getActivity().getSupportFragmentManager();
+
                 }
             });
 

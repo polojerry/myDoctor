@@ -12,11 +12,9 @@
             android:id="@+id/rv_doctors_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="2"
             tools:listitem="@layout/item_doctors_category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

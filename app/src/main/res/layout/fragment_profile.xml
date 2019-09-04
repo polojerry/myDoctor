@@ -31,7 +31,7 @@
             android:layout_width="224dp"
             android:layout_height="200dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/polo_profile"
+            android:src="@drawable/placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_profile" />
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:hint="Name"
-                android:text="Jeremiah Polo" />
+                tools:text="Jeremiah Polo" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Contact Number"
                 android:enabled="true"
-                android:text="254790689212" />
+                tools:text="254790689212" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:hint="Designation"
-                android:text="Doctor" />
+                tools:text="Doctor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -167,7 +167,7 @@
                 android:hint="Speciality"
                 android:enabled="true"
                 android:textColor="@android:color/black"
-                android:text="Dentist" />
+                tools:text="Dentist" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

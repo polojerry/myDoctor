@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.polotechnologies.mydoctor.R;
 import com.polotechnologies.mydoctor.databinding.FragmentLoginBinding;
+
+import javax.annotation.Nullable;
 
 
 /**
@@ -27,6 +37,11 @@ public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding mFragmentLoginBinding;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+
+    private NavHostFragment hostFragment;
+
+    public static boolean isDoctor;
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -41,16 +56,28 @@ public class LoginFragment extends Fragment {
         inflater.inflate(R.layout.fragment_login, container, false);
 
         mAuth = FirebaseAuth.getInstance();
+        mFirestore  = FirebaseFirestore.getInstance();
 
-        /*if(mAuth.getCurrentUser()!=null){
-            Navigation.findNavController(getActivity(),R.id.login_button)
-                    .navigate(R.id.action_loginFragment_to_homeFragment);
-        }*/
+        hostFragment = (NavHostFragment)getActivity().getSupportFragmentManager()
+                .findFragmentById(R.id.main_nav_host_fragment);
+
+        if(mAuth.getCurrentUser() !=null){
+
+            checkUserCategory();
+
+            if(!isDoctor){
+                hostFragment.getNavController().navigate(R.id.action_loginFragment_to_homeFragment);
+            }else {
+                hostFragment.getNavController().navigate(R.id.action_loginFragment_to_doctorsHomeFragment);
+            }
+
+        }
 
         mFragmentLoginBinding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUser();
+
             }
         });
 
@@ -60,9 +87,22 @@ public class LoginFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpFragment);
             }
         });
-
-
         return mFragmentLoginBinding.getRoot();
+    }
+
+    private void checkUserCategory() {
+
+        CollectionReference documentReference = mFirestore.collection("doctorsProfile");
+        String uid = mAuth.getCurrentUser().getUid();
+
+        final Query query = documentReference.whereEqualTo("uId",uid );
+
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                isDoctor = !queryDocumentSnapshots.isEmpty();
+            }
+        });
     }
 
     private void loginUser() {
@@ -75,9 +115,14 @@ public class LoginFragment extends Fragment {
         mAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                checkUserCategory();
                 Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(getActivity(),R.id.login_button)
-                        .navigate(R.id.action_loginFragment_to_homeFragment);
+
+                if(!isDoctor){
+                    hostFragment.getNavController().navigate(R.id.action_loginFragment_to_homeFragment);
+                }else {
+                    hostFragment.getNavController().navigate(R.id.action_loginFragment_to_doctorsHomeFragment);
+                }
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -105,5 +150,6 @@ public class LoginFragment extends Fragment {
         return false;
 
     }
+
 
 }

@@ -3,6 +3,7 @@ package com.polotechnologies.mydoctor;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -29,6 +30,8 @@ import com.polotechnologies.mydoctor.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthStateListener;
+
     private NavController mNavController;
     public HomeFragment() {
         // Required empty public constructor
@@ -44,6 +47,7 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
 
         mAuth = FirebaseAuth.getInstance();
+        setAuthListener();
 
         NavHostFragment navHostFragment = (NavHostFragment)getChildFragmentManager()
                 .findFragmentById(R.id.fragment_home_host);
@@ -74,6 +78,16 @@ public class HomeFragment extends Fragment {
         NavigationUI.setupWithNavController(bottomNavigationView,mNavController);
 
         return view;
+    }
+
+    private void setAuthListener() {
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+            }
+        };
+
     }
 
 }

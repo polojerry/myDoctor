@@ -70,7 +70,7 @@ public class DoctorsFragment extends Fragment {
             mDoctorCategoriesList.add(category);
         }
 
-        mCategoryRecyclerAdapter = new DoctorsCategoryRecyclerAdapter(getContext(),mDoctorCategoriesList);
+        mCategoryRecyclerAdapter = new DoctorsCategoryRecyclerAdapter(getContext(),mDoctorCategoriesList,getParentFragment());
         mRecyclerView.setAdapter(mCategoryRecyclerAdapter);
 
     }

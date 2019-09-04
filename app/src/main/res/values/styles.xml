@@ -12,4 +12,11 @@
         <item name="colorButtonNormal">@android:color/white</item>
     </style>
 
+    <style name="AppTheme.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:src">@drawable/ic_send_black</item>
+        <item name="tint">@android:color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
 </resources>
